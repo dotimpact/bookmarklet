@@ -3,6 +3,7 @@ function execBookmarklet() {
   if (!title) return;
   var lines;
   if( window.location.href.match(/(youtube.com|vimeo.com)/)) {
+    title = title.replace(/^\(\d+\)/, "");
     lines = ['', '[' + window.location.href + ']', document.title];
   } else{
     lines = ['', document.title + '[~ ' + window.location.href + ']'];
