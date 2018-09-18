@@ -1,7 +1,12 @@
 function execBookmarklet() {
   var title = window.prompt('Register to dotimpact', document.title);
   if (!title) return;
-  var lines = ['', document.title + '[~ ' + window.location.href + ']'];
+  var lines;
+  if( window.location.href.match(/(youtube.com|vimeo.com)/)) {
+    lines = ['', '[~ ' + window.location.href + ']', document.title];
+  } else{
+    lines = ['', document.title + '[~ ' + window.location.href + ']'];
+  }
   var quote = window.getSelection().toString();
   if (quote.trim()) lines = lines.concat(quote.split(/\n/g).map(function (line) {
     return ' > ' + line;
